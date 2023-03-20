@@ -14,7 +14,7 @@
 
 在配置文件`config/server.php`中调整默认端口进程数量`count`数量为`1`。(`windows`可忽略此步，`linux`必调，否则默认端口开启多进程，负载均衡配置要适当考量多一些权重。)
 
-在配置文件`config/plugin/auto/port.app.php`中调整`process_count`数量。
+在配置文件`config/plugin/auto/port/app.php`中调整`process_count`数量。
 
 例如`8`，那将会自动创建`7`不同的端口.
 
