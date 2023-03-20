@@ -1,15 +1,12 @@
 <?php
 
-if (DIRECTORY_SEPARATOR === '/') {
-    return [];
-}
+$process_count = config('plugin.auto.port.app.process_count', 8);
 
-$count = config('server.count', 4);
 $listen = config('server.listen', 'http://0.0.0.0:8787');
 $port = explode(':', $listen)[2] ?? 8787;
 $process = [];
 
-for ($i = 1; $i < $count; $i += 1) {
+for ($i = 1; $i < $process_count; $i += 1) {
     $process[$i] = [
         'handler' => \Webman\App::class,
         'listen' => 'http://0.0.0.0:' . ($port + $i),
