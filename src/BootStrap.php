@@ -25,6 +25,8 @@ class BootStrap implements \Webman\Bootstrap
 
         $nginx = <<<EOT
 upstream webman {
+    ip_hash;
+    least_conn;
     #__process__;
     keepalive 10240;
 }
