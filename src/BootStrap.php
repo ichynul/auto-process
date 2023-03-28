@@ -25,7 +25,7 @@ class BootStrap implements \Webman\Bootstrap
 
         $nginx = <<<EOT
 upstream webman {
-    ip_hash;
+    #ip_hash;
     least_conn;
     #__process__;
     keepalive 10240;
@@ -42,7 +42,7 @@ EOT;
         if ($res) {
             echo '[auto-process]Writing nginx config file at runtime/nginx.conf succeed.' . "\n";
         } else {
-            echo '[auto-process] Writing nginx config file failed.' . "\n";
+            echo '[auto-process]Writing nginx config file failed.' . "\n";
         }
     }
 }
