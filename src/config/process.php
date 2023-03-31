@@ -1,7 +1,8 @@
 <?php
 
 $process_count = config('plugin.auto.port.app.process_count', 8);
-
+$user = config('server.user', '');
+$group = config('server.group', '');
 $listen = config('server.listen', 'http://0.0.0.0:8787');
 $port = explode(':', $listen)[2] ?? 8787;
 $process = [];
@@ -11,6 +12,8 @@ for ($i = 1; $i < $process_count; $i += 1) {
         'handler' => \Webman\App::class,
         'listen' => 'http://0.0.0.0:' . ($port + $i),
         'count' => 1, // 进程数
+        'user' => $user,
+        'group' => $group,
         'constructor' => [
             'request_class' => \support\Request::class, // request类设置
             'logger' => \support\Log::channel('default'), // 日志实例
