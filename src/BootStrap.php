@@ -33,7 +33,22 @@ upstream webman {
 #其他参照webman官方文档
 #https://www.workerman.net/doc/webman/others/nginx-proxy.html
 server {
-    #...
+    server_name localhost;         #请修改站点域名
+    listen 8081;                   #请修改端口
+    access_log off;
+    root /to/your/webman/public;   #请修网站根目录，以使nginx直接处理静态资源
+
+    location ^~ / {
+        proxy_set_header X-Real-IP \$remote_addr;
+        proxy_set_header Host \$host;
+        proxy_set_header X-Forwarded-Proto \$scheme;
+        proxy_http_version 1.1;
+        proxy_set_header Connection "";
+        if (!-f \$request_filename){
+            proxy_pass http://webman;
+            break;
+        }
+    }
 }
 
 EOT;
