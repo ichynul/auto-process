@@ -37,10 +37,10 @@ server {
 }
 
 EOT;
-        $res = file_put_contents(runtime_path() . '/nginx.conf', str_replace('#__process__', implode(';' . PHP_EOL . '    ', $ports), $nginx));
+        $res = file_put_contents(runtime_path() . '/webman.conf', str_replace('#__process__', implode(';' . PHP_EOL . '    ', $ports), $nginx));
 
         if ($res) {
-            echo '[auto-process]Writing nginx config file at runtime/nginx.conf succeed.' . "\n";
+            echo '[auto-process]Writing nginx config file at runtime/webman.conf succeed.' . "\n";
         } else {
             echo '[auto-process]Writing nginx config file failed.' . "\n";
         }
