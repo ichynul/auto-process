@@ -15,7 +15,7 @@
     ],
     "require": {
         "php": ">=7.2",
-        "workerman/webman-framework": "^1.4.1"
+        "workerman/webman-framework": "^1.4.1|^2.0.1"
     },
     "autoload": {
         "psr-4": {
