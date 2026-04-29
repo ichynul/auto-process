@@ -11,7 +11,7 @@ $process = [];
 
 for ($i = 1; $i < $process_count; $i += 1) {
     $process[$i] = [
-        'handler' => \Webman\App::class,
+        'handler' => \app\process\Http::class,
         'listen' => 'http://0.0.0.0:' . ($port + $i),
         'count' => 1, // 进程数
         'user' => $user,
