@@ -16,7 +16,7 @@ class BootStrap implements \Webman\Bootstrap
     public static function makeConfig()
     {
         $process = config('plugin.auto.port.process', []);
-        $listen = config('server.listen', 'http://0.0.0.0:8787');
+        $listen = config('process.webman.listen', 'http://0.0.0.0:8787');
 
         $ports = [str_replace('http://0.0.0.0', 'server 127.0.0.1', $listen)];
         foreach ($process as $pr) {
